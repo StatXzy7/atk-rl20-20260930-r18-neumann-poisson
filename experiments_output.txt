@@ -1,0 +1,68 @@
+
+====================================================================================================
+1. Smooth manufactured solution u=cos(pi x)cos(pi y), constant k=2 -- grid convergence
+====================================================================================================
+  f from analytic cell averages; discrete compatibility residual sum(f)*V reported per grid
+  n=16   err=3.178e-03 p=nan it=   31 conv=1 relres=1.648e-12 mean(u)=-6.94e-18 fluximb=3.66e-13 bndflux=+4.44e-16 sum(f)V=+0.00e+00
+  n=32   err=8.010e-04 p=1.99 it=   66 conv=1 relres=5.922e-12 mean(u)=-3.04e-18 fluximb=4.09e-13 bndflux=+1.46e-16 sum(f)V=-1.39e-17
+  n=64   err=2.007e-04 p=2.00 it=  132 conv=1 relres=8.680e-12 mean(u)=-1.42e-19 fluximb=1.57e-13 bndflux=+9.11e-17 sum(f)V=-3.10e-17
+  n=128  err=5.019e-05 p=2.00 it=  263 conv=1 relres=9.343e-12 mean(u)=-5.76e-20 fluximb=5.37e-14 bndflux=-3.81e-17 sum(f)V=-4.45e-17
+  n=256  err=1.255e-05 p=2.00 it=  505 conv=1 relres=1.728e-11 mean(u)=+1.51e-19 fluximb=2.95e-14 bndflux=+4.37e-17 sum(f)V=-2.78e-17
+
+====================================================================================================
+2. Smooth manufactured solution, variable k=1+x/2+y/4 -- grid convergence (mode='project')
+====================================================================================================
+  f from 8-point Gauss cell averages; the (tiny) removed mean is reported, not silent
+  n=16   err=3.524e-03 p=nan it=   83 conv=1 relres=9.229e-12 mean(u)=+2.08e-17 fluximb=1.39e-12 bndflux=-2.22e-16 removed_mean=+0.00e+00 modified=False
+  n=32   err=8.875e-04 p=1.99 it=  172 conv=1 relres=7.721e-12 mean(u)=-1.37e-17 fluximb=3.31e-13 bndflux=-1.11e-16 removed_mean=-1.11e-16 modified=False
+  n=64   err=2.223e-04 p=2.00 it=  345 conv=1 relres=9.734e-12 mean(u)=+1.21e-17 fluximb=1.32e-13 bndflux=+1.11e-16 removed_mean=-1.11e-16 modified=False
+  n=128  err=5.560e-05 p=2.00 it=  689 conv=1 relres=1.037e-11 mean(u)=+5.88e-18 fluximb=4.05e-14 bndflux=-2.78e-16 removed_mean=+0.00e+00 modified=False
+
+====================================================================================================
+3. Anisotropic grid spacing
+====================================================================================================
+  (a) Lx=1, Ly=0.25, nx=ny  -> dx/dy = 4
+  nx=ny=16   err=3.178e-03 p=nan it=   59 conv=1 relres=5.721e-12 mean(u)=+0.00e+00 fluximb=4.09e-12 bndflux=+2.66e-15 
+  nx=ny=32   err=8.010e-04 p=1.99 it=  118 conv=1 relres=9.370e-12 mean(u)=-2.39e-18 fluximb=1.99e-12 bndflux=+3.61e-16 
+  nx=ny=64   err=2.007e-04 p=2.00 it=  233 conv=1 relres=9.051e-12 mean(u)=-1.09e-18 fluximb=7.08e-13 bndflux=-7.29e-16 
+  nx=ny=128  err=5.019e-05 p=2.00 it=  457 conv=1 relres=1.069e-11 mean(u)=+1.33e-18 fluximb=1.55e-13 bndflux=+1.86e-17 
+  (b) Lx=Ly=1, nx=4*ny      -> dx/dy = 1/4
+  ( 32,8  ) err=6.655e-03 p=nan it=   62 conv=1 relres=7.214e-12 mean(u)=-3.47e-18 fluximb=1.26e-12 bndflux=+0.00e+00 
+  ( 64,16 ) err=1.696e-03 p=1.97 it=  121 conv=1 relres=8.092e-12 mean(u)=+1.08e-18 fluximb=7.61e-13 bndflux=-1.04e-16 
+  (128,32 ) err=4.260e-04 p=1.99 it=  235 conv=1 relres=1.004e-11 mean(u)=-1.39e-18 fluximb=2.12e-13 bndflux=-9.97e-18 
+  (256,64 ) err=1.066e-04 p=2.00 it=  456 conv=1 relres=1.250e-11 mean(u)=-3.69e-18 fluximb=8.46e-14 bndflux=-1.74e-16 
+
+====================================================================================================
+4. Discrete manufactured solution: f = A u* for random zero-mean u*, high-contrast k
+====================================================================================================
+  loguniform k in [1,1e2]    recerr=1.30e-06 it=  288 conv=1 relres=9.603e-09 mean(u)=-2.65e-17 fluximb=4.93e-06 bndflux=-1.11e-12 
+  loguniform k in [1,1e4]    recerr=3.59e-06 it=  652 conv=1 relres=9.876e-09 mean(u)=-3.47e-18 fluximb=2.96e-04 bndflux=-2.36e-11 
+  loguniform k in [1,1e6]    recerr=2.72e-05 it= 1634 conv=1 relres=9.950e-09 mean(u)=-6.59e-17 fluximb=1.87e-02 bndflux=+1.16e-10 
+  checkerboard 1 / 1e6       recerr=2.08e-07 it=  229 conv=1 relres=8.925e-09 mean(u)=+2.95e-17 fluximb=3.45e-07 bndflux=-6.75e-14 
+
+====================================================================================================
+5. Constant field u*=3.7 (null space): f = A u* = 0
+====================================================================================================
+  ||A u*||_inf = 0.000e+00  (constant is in the null space)
+  zero-mean representative   it=    0 conv=1 relres=0.000e+00 mean(u)=+0.00e+00 fluximb=0.00e+00 bndflux=+0.00e+00 ||u||_inf=0.00e+00
+  u* - u = 3.700000000000000 everywhere (recovered up to the null constant)
+
+====================================================================================================
+6. Incompatible right-hand side
+====================================================================================================
+  mean(f) = 1.500000  -> discrete compatibility residual sum(f)*V = 1.500000e+00
+  strict mode rejects: right-hand side violates the discrete compatibility condition: sum(f)*V = 1.500000e+00 (relative 3.391e-05 > 1.0e-12); pure Neumann problems need a zero-mean source. Re-run with mode='project' to solve the projected equation A u = f - mean(f).
+  project mode: solved equation = A u = f - (1.500000e+00)
+  removed mean c = 1.500000000000, rhs_modified = True
+  projected solve            it=  221 conv=1 relres=9.903e-11 mean(u)=-3.82e-17 fluximb=3.76e-08 bndflux=+1.85e-13 
+  true residual vs modified eq  ||A u-(f-c)||_inf = 3.855e-05
+  true residual vs original eq  ||A u - f   ||_inf = 1.500e+00  (= |c|, no solution exists)
+  recovery of u*                          = 8.017e-09
+
+====================================================================================================
+7. Illegal coefficients are rejected
+====================================================================================================
+  k=0 in one cell: InvalidCoefficientError: k must be strictly positive in every cell
+  k<0 in one cell: InvalidCoefficientError: k must be strictly positive in every cell
+  NaN in one cell: InvalidCoefficientError: k contains NaN or inf
+  inf in one cell: InvalidCoefficientError: k contains NaN or inf
